@@ -43,7 +43,6 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: 2px solid #eebefa;
   box-shadow: 0px 0px 0px 5px #f3d9fa;
-
 }
 
 input[type="text"]:focus-visible {
@@ -59,20 +58,6 @@ input[type="text"]:active {
   position: relative;
   width: 280px;
   margin-bottom: 20px;
-}
-
-.container div img {
-  border-radius: 5px;
-}
-.container div div {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 50px;
-  height: 50px;
-  background: #f8f0fc;
-  border: 2px solid #862e9c;
-  border-radius: 50%;
 }
 
 @media(min-width: 48em){  

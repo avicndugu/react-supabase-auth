@@ -2,12 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 // Initialize the Supabase JS client
 import { createClient } from '@supabase/supabase-js';
-
+import { useState } from 'react';
 
 function App() {
   const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
   const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+  // Changing signin to signup
+  const [loginState, setLoginState] = useState(1);
 
   const signInWithEmail = async () => {
     const { user, error } = await supabase.auth.signInWithPassword({
@@ -29,13 +32,13 @@ function App() {
     const { error } = await supabase.auth.signOut()
   }
 
-  if(true){
+  if(loginState===1){
     return (
       <div className="App">
         <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button>Sign In</button>
+          <button onClick={()=> setLoginState(2)}>Sign In</button>
         </div>
-        <div className="pt-1" style={{background:"#eee"}}>
+        <div className="pt-1" style={{background:"#dee"}}>
           <p style={{textAlign:"center"}}><b>Sign Up</b></p>
           <div className="container pt-1 pb-1">
             <div className="pb-1">
@@ -57,11 +60,11 @@ function App() {
         </div>
       </div>
     )
-  } else if(false){
+  } else if(loginState===2){
     return(
       <div className="App">
         <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button>Sign Up</button>
+          <button onClick={()=> setLoginState(1)}>Sign Up</button>
         </div>
         <div className="pt-1" style={{background:"#ede"}}>
         <p style={{textAlign:"center"}}><b>Sign In</b></p>
