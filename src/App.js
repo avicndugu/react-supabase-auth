@@ -28,57 +28,73 @@ function App() {
   const signOut = async () => {
     const { error } = await supabase.auth.signOut()
   }
-  
 
-  return (
-    <div className="App">
-      <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-        <button>Sign Up</button>
-        <button>Sign In</button>
+  if(true){
+    return (
+      <div className="App">
+        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
+          <button>Sign In</button>
+        </div>
+        <div className="pt-1" style={{background:"#eee"}}>
+          <p style={{textAlign:"center"}}><b>Sign Up</b></p>
+          <div className="container pt-1 pb-1">
+            <div className="pb-1">
+              <label htmlFor="related-images-en">Email</label>
+              <br />
+              <br />
+              <input type="text" id="related-images-en" />
+              <br />
+              <br />
+              <label htmlFor="related-images-en">Password</label>
+              <br />
+              <br />
+              <input type="text" id="related-images-en" />
+              <br />
+              <br />
+              <button onClick={()=> signUpWithEmail() }>Sign Up Button</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  } else if(false){
+    return(
+      <div className="App">
+        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
+          <button>Sign Up</button>
+        </div>
+        <div className="pt-1" style={{background:"#ede"}}>
+        <p style={{textAlign:"center"}}><b>Sign In</b></p>
+          <div className="container pt-1 pb-1">
+            <div className="pb-1">
+              <label htmlFor="related-images-en">Email</label>
+              <br />
+              <br />
+              <input type="text" id="related-images-en" />
+              <br />
+              <br />
+              <label htmlFor="related-images-en">Password</label>
+              <br />
+              <br />
+              <input type="text" id="related-images-en" />
+              <br />
+              <br />
+              <button onClick={()=> signInWithEmail() }>Sign In Button</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+  else {
+    return (
+      <div className="App">
+        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
         <button onClick={()=> signOut() }>Sign Out</button>
       </div>
-      <div className="pt-1" style={{background:"#eee"}}>
-        <p style={{textAlign:"center"}}><b>Sign Up</b></p>
-        <div className="container pt-1 pb-1">
-          <div className="pb-1">
-            <label htmlFor="related-images-en">Email</label>
-            <br />
-            <br />
-            <input type="text" id="related-images-en" />
-            <br />
-            <br />
-            <label htmlFor="related-images-en">Password</label>
-            <br />
-            <br />
-            <input type="text" id="related-images-en" />
-            <br />
-            <br />
-            <button onClick={()=> signUpWithEmail() }>Sign Up Button</button>
-          </div>
-        </div>
       </div>
-      <div className="pt-1" style={{background:"#ede"}}>
-        <p style={{textAlign:"center"}}><b>Sign In</b></p>
-        <div className="container pt-1 pb-1">
-          <div className="pb-1">
-            <label htmlFor="related-images-en">Email</label>
-            <br />
-            <br />
-            <input type="text" id="related-images-en" />
-            <br />
-            <br />
-            <label htmlFor="related-images-en">Password</label>
-            <br />
-            <br />
-            <input type="text" id="related-images-en" />
-            <br />
-            <br />
-            <button onClick={()=> signInWithEmail() }>Sign In Button</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    )
+  }
 }
 
 export default App;
