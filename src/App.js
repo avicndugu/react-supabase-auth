@@ -1,16 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
-// Initialize the Supabase JS client
-import { createClient } from '@supabase/supabase-js';
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import { supabase } from './supabase';
 function App() {
-  const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
-  const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
-  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+  // console.log(supabase)
+  // console.log(supabase.auth.user)
 
   // Changing signin to signup
   const [loginState, setLoginState] = useState(1);
+
+  const [user, setUser] = useState(null);
+  // useEffect(() => {
+  //   // Checking user from supabase when app loads
+  //   checkUser();
+  //   checkSession();
+  // })
+
+  const checkSession = async () => {
+    const { data, error } = await supabase.auth.getSession()
+    // console.log(data)
+    // console.log(data.session.user.email)
+    setUser(data.session.user);
+    // return data.session.user.email
+
+    // console.log(data.session.user)
+    // const session = await supabase.auth.getSession();
+    // console.log(session)
+  }
+
+  checkSession();
+  const checkUser = async () => {
+    /* if a user is signed in, update local state */
+    const user = await supabase.auth.getUser();
+    console.log(user)
+    // const users = await supabase.auth.user();
+    // console.log(supabase.auth.user())
+    // setUser(users);
+  }
 
   const signInWithEmail = async () => {
     const { user, error } = await supabase.auth.signInWithPassword({
@@ -25,7 +52,7 @@ function App() {
       email: 'avicndugu1234@gmail.com',
       password: 'example-password',
     })
-    await console.log(user)
+    // await console.log(user)
   }
   // Sign out function works. Deletes the entry on the localstorage
   const signOut = async () => {
@@ -94,8 +121,8 @@ function App() {
               <input type="text" id="related-images-en" />
               <br />
               <br />
-              <button onClick={()=> setLoginState(4) }>Sign In Button</button>
-              {/*<button onClick={()=> signInWithEmail() }>Sign In Button</button>*/}
+              {/*<button onClick={()=> setLoginState(4) }>Sign In Button</button>*/}
+              <button onClick={()=> signInWithEmail() }>Sign In Button</button>
             </div>
           </div>
         </div>
