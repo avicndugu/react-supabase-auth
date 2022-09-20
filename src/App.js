@@ -36,7 +36,16 @@ function App() {
     return (
       <div className="App">
         <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> setLoginState(2)}>Sign In</button>
+          <button onClick={()=> setLoginState(2)}>Sign Up</button>
+          <button onClick={()=> setLoginState(3)}>Sign In</button>
+        </div>
+      </div>
+    )
+  } else if(loginState===2){
+    return (
+      <div className="App">
+        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
+          <button onClick={()=> setLoginState(3)}>Sign In</button>
         </div>
         <div className="pt-1" style={{background:"#dee"}}>
           <p style={{textAlign:"center"}}><b>Sign Up</b></p>
@@ -60,11 +69,11 @@ function App() {
         </div>
       </div>
     )
-  } else if(loginState===2){
+  } else if(loginState===3){
     return(
       <div className="App">
         <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> setLoginState(1)}>Sign Up</button>
+          <button onClick={()=> setLoginState(2)}>Sign Up</button>
         </div>
         <div className="pt-1" style={{background:"#ede"}}>
         <p style={{textAlign:"center"}}><b>Sign In</b></p>
@@ -93,8 +102,8 @@ function App() {
     return (
       <div className="App">
         <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-        <button onClick={()=> signOut() }>Sign Out</button>
-      </div>
+          <button onClick={()=> signOut() }>Sign Out</button>
+        </div>
       </div>
     )
   }
