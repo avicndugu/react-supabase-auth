@@ -39,6 +39,9 @@ function App() {
           <button onClick={()=> setLoginState(2)}>Sign Up</button>
           <button onClick={()=> setLoginState(3)}>Sign In</button>
         </div>
+        <div className="pt-1" style={{background:"#dee"}}>
+          <p style={{textAlign:"center"}}><b>State: Not Logged in</b></p>
+        </div>
       </div>
     )
   } else if(loginState===2){
@@ -91,7 +94,8 @@ function App() {
               <input type="text" id="related-images-en" />
               <br />
               <br />
-              <button onClick={()=> signInWithEmail() }>Sign In Button</button>
+              <button onClick={()=> setLoginState(4) }>Sign In Button</button>
+              {/*<button onClick={()=> signInWithEmail() }>Sign In Button</button>*/}
             </div>
           </div>
         </div>
@@ -102,7 +106,11 @@ function App() {
     return (
       <div className="App">
         <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> signOut() }>Sign Out</button>
+          <button onClick={()=> setLoginState(1) }>Sign Out</button>
+          {/*<button onClick={()=> signOut() }>Sign Out</button>*/}
+        </div>
+        <div className="pt-1" style={{background:"#dee"}}>
+          <p style={{textAlign:"center"}}><b>State: Logged In</b></p>
         </div>
       </div>
     )
