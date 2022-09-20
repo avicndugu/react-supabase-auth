@@ -1,8 +1,8 @@
-export default function SignUp(){
+export default function SignIn(props){
   return (
     <>
       <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-        <button onClick={()=> setLoginState(2)}>Sign Up</button>
+        <button>Sign Up</button>
       </div>
       <div className="pt-1" style={{background:"#ede"}}>
       <p style={{textAlign:"center"}}><b>Sign In</b></p>
@@ -20,8 +20,7 @@ export default function SignUp(){
             <input type="text" id="related-images-en" />
             <br />
             <br />
-            {/*<button onClick={()=> setLoginState(4) }>Sign In Button</button>*/}
-            <button onClick={()=> signInWithEmail() }>Sign In Button</button>
+            <button onClick={()=> props.signInWithEmail() }>Sign In Button</button>
           </div>
         </div>
       </div>

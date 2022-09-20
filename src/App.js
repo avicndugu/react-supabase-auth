@@ -62,33 +62,14 @@ function App() {
   const signOut = async () => {
     const { error } = await supabase.auth.signOut()
   }
-
-  if(loginState===1){
-    return (
-      <div className="App">
-        <Home />
-      </div>
-    )
-  } else if(loginState===2){
-    return (
-      <div className="App">
-        <SignUp />
-      </div>
-    )
-  } else if(loginState===3){
-    return(
-      <div className="App">
-        <SignIn />
-      </div>
-    )
-  }
-  else {
-    return (
-      <div className="App">
-        <Dashboard />
-      </div>
-    )
-  }
+  return (
+    <div className="App">
+      <Home />
+      <SignUp signUpWithEmail={ signUpWithEmail } />
+      <SignIn signInWithEmail={ signInWithEmail } />
+      <Dashboard />
+    </div>
+  )
 }
 
 export default App;
