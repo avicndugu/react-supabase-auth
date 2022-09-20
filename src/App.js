@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
+import Home from './pages/home';
+import SignIn from './pages/signin';
+import SignUp from './pages/signup';
+import Dashboard from './pages/dashboard';
 function App() {
 
   // console.log(supabase)
@@ -62,83 +66,26 @@ function App() {
   if(loginState===1){
     return (
       <div className="App">
-        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> setLoginState(2)}>Sign Up</button>
-          <button onClick={()=> setLoginState(3)}>Sign In</button>
-        </div>
-        <div className="pt-1" style={{background:"#dee"}}>
-          <p style={{textAlign:"center"}}><b>State: Not Logged in</b></p>
-        </div>
+        <Home />
       </div>
     )
   } else if(loginState===2){
     return (
       <div className="App">
-        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> setLoginState(3)}>Sign In</button>
-        </div>
-        <div className="pt-1" style={{background:"#dee"}}>
-          <p style={{textAlign:"center"}}><b>Sign Up</b></p>
-          <div className="container pt-1 pb-1">
-            <div className="pb-1">
-              <label htmlFor="related-images-en">Email</label>
-              <br />
-              <br />
-              <input type="text" id="related-images-en" />
-              <br />
-              <br />
-              <label htmlFor="related-images-en">Password</label>
-              <br />
-              <br />
-              <input type="text" id="related-images-en" />
-              <br />
-              <br />
-              <button onClick={()=> signUpWithEmail() }>Sign Up Button</button>
-            </div>
-          </div>
-        </div>
+        <SignUp />
       </div>
     )
   } else if(loginState===3){
     return(
       <div className="App">
-        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> setLoginState(2)}>Sign Up</button>
-        </div>
-        <div className="pt-1" style={{background:"#ede"}}>
-        <p style={{textAlign:"center"}}><b>Sign In</b></p>
-          <div className="container pt-1 pb-1">
-            <div className="pb-1">
-              <label htmlFor="related-images-en">Email</label>
-              <br />
-              <br />
-              <input type="text" id="related-images-en" />
-              <br />
-              <br />
-              <label htmlFor="related-images-en">Password</label>
-              <br />
-              <br />
-              <input type="text" id="related-images-en" />
-              <br />
-              <br />
-              {/*<button onClick={()=> setLoginState(4) }>Sign In Button</button>*/}
-              <button onClick={()=> signInWithEmail() }>Sign In Button</button>
-            </div>
-          </div>
-        </div>
+        <SignIn />
       </div>
     )
   }
   else {
     return (
       <div className="App">
-        <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-          <button onClick={()=> setLoginState(1) }>Sign Out</button>
-          {/*<button onClick={()=> signOut() }>Sign Out</button>*/}
-        </div>
-        <div className="pt-1" style={{background:"#dee"}}>
-          <p style={{textAlign:"center"}}><b>State: Logged In</b></p>
-        </div>
+        <Dashboard />
       </div>
     )
   }
