@@ -11,35 +11,26 @@ export default function PrivateRoute() {
   const [auth, setAuth] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
 
-  async function checkUser() {
-    try {
-      const user = await supabase.auth.getUser()
-      if(user){
+  async function checkSession() {
+    const { data, error } = await supabase.auth.getSession()
+    await console.log(data.session)
+    if (data){
+      if (data.session){
         setAuth(true)
-        // setCurrentUser(user)
-        // console.log(user)
-
-      } else if(user===null){
-        // setTimeout(console.log(user), 1)
-
+      } else{
+        setAuth(false)
       }
-      return user
-    } catch (error) {
-      return error
     }
   }
-
-  checkUser()
-
+  checkSession()
 
 
-  if (!auth || !currentUser){
+  if (auth===null ){
     return (
       <p>Checking whether user is logged in</p>
     )
   } else {
     // Check if authorized
-    // const auth = null;
     // If not authorized, show element to sign in page
     return auth ? <Dashboard /> : <Navigate to="/signin" />;
   }
