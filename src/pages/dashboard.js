@@ -1,4 +1,27 @@
+import { supabase } from '../supabase';
+import { useState, useEffect } from 'react';
+
 export default function Dashboard(props){
+  const [user, setUser] = useState(null);
+  
+  // Sign out function works. Deletes the entry on the localstorage
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut()
+  }
+
+  const checkSession = async () => {
+    const { data, error } = await supabase.auth.getSession()
+    // console.log(data)
+    // console.log(data.session.user.email)
+    setUser(data.session.user);
+    // return data.session.user.email
+
+    // console.log(data.session.user)
+    // const session = await supabase.auth.getSession();
+    // console.log(session)
+  }
+  checkSession();
+
   return (
     <>
       <div className="navbar" style={{display:"flex", justifyContent: "right"}}>

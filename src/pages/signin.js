@@ -1,8 +1,18 @@
+import { supabase } from '../supabase';
+import { Link } from "react-router-dom";
+
 export default function SignIn(props){
+  const signInWithEmail = async () => {
+    const { user, error } = await supabase.auth.signInWithPassword({
+      email: 'avicndugu1234@gmail.com',
+      password: 'example-password',
+    })
+  }
   return (
     <>
-      <div className="navbar" style={{display:"flex", justifyContent: "right"}}>
-        <button>Sign Up</button>
+      <div className="navbar" style={{display:"flex", justifyContent: "space-between"}}>
+        <Link to="/"><button>Home</button></Link> 
+        <Link to="/signup"><button>Sign Up</button></Link>
       </div>
       <div className="pt-1" style={{background:"#ede"}}>
       <p style={{textAlign:"center"}}><b>Sign In</b></p>
@@ -20,7 +30,7 @@ export default function SignIn(props){
             <input type="text" id="related-images-en" />
             <br />
             <br />
-            <button onClick={()=> props.signInWithEmail() }>Sign In Button</button>
+            <button onClick={()=> signInWithEmail() }>Sign In Button</button>
           </div>
         </div>
       </div>
