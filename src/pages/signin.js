@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '../supabase';
-import { Link } from "react-router-dom";
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 
 export default function SignIn(props){
@@ -15,16 +14,17 @@ export default function SignIn(props){
   }
   // Listen for the signed in event
   supabase.auth.onAuthStateChange((event, session) => {
-    if (event == 'SIGNED_IN') {
-      console.log('SIGNED_IN', session)
-      setSignInState(true)
+    if (event === 'SIGNED_IN') {
+      console.log('SIGNED_IN', session);
+      setSignInState(true);
     }
   })
 
-  const signUpState = () => {
+  const signInCheck = () => {
     signInWithEmail();
     console.log("user");
   }
+
   if(!signInState){
     return (
       <>
@@ -48,7 +48,7 @@ export default function SignIn(props){
               <input type="text" id="related-images-en" />
               <br />
               <br />
-              <button onClick={()=> signUpState() }>Sign In Button</button>
+              <button onClick={()=> signInCheck() }>Sign In Button</button>
             </div>
           </div>
         </div>
