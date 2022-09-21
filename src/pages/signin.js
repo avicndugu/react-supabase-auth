@@ -8,6 +8,11 @@ export default function SignIn(props){
       password: 'example-password',
     })
   }
+
+  const signUpState = () => {
+    signInWithEmail();
+    console.log("user");
+  }
   return (
     <>
       <div className="navbar" style={{display:"flex", justifyContent: "space-between"}}>
@@ -30,7 +35,7 @@ export default function SignIn(props){
             <input type="text" id="related-images-en" />
             <br />
             <br />
-            <button onClick={()=> signInWithEmail() }>Sign In Button</button>
+            <button onClick={()=> signUpState() }>Sign In Button</button>
           </div>
         </div>
       </div>

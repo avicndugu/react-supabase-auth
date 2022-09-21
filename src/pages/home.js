@@ -6,6 +6,7 @@ export default function Home(){
       <div className="navbar" style={{display:"flex", justifyContent: "space-between"}}>
         <Link to="/"><button>Home</button></Link> 
         <div>
+          <Link to="/dashboard"><button>Dashboard</button></Link>
           <Link to="/signup"><button>Sign Up</button></Link>
           <Link to="/signin"><button>Sign In</button></Link>
         </div>

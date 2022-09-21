@@ -6,7 +6,8 @@ import { supabase } from './supabase';
 import Home from './pages/home';
 import SignIn from './pages/signin';
 import SignUp from './pages/signup';
-import Dashboard from './pages/dashboard';
+import PrivateRoute from './components/PrivateRoute';
+
 function App() {
 
   // console.log(supabase)
@@ -36,7 +37,7 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path="/signup" element={ <SignUp /> } />
         <Route path="/signin" element={ <SignIn /> } />
-        <Route path="/dashboard" element={ <Dashboard /> } />
+        <Route path="/dashboard" element={ <PrivateRoute /> } />
       </Routes>
     </div>
   )
