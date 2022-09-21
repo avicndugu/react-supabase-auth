@@ -8,7 +8,10 @@ export default function SignIn(props){
       password: 'example-password',
     })
   }
-
+  // Listen for the signed in event
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event == 'SIGNED_IN') console.log('SIGNED_IN', session)
+  })
   const signUpState = () => {
     signInWithEmail();
     console.log("user");
