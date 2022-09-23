@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 export default function PrivateRoute() {
   // const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const [auth, setAuth] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
 
